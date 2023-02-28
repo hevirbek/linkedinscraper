@@ -87,7 +87,7 @@ async def scrape(email, password, username):
         except FileNotFoundError:
             cookies = None
 
-        browser = await p.firefox.launch(headless=True)
+        browser = await p.chromium.launch(headless=True)
         
         if cookies:
             context = await browser.new_context(
@@ -95,7 +95,9 @@ async def scrape(email, password, username):
                 storage_state={"cookies": cookies}
             )
         else:
-            context = await browser.new_context()
+            context = await browser.new_context(
+                viewport={"width": 1920, "height": 1080}
+            )
             page = await context.new_page()
             await login(page, email, password)
 

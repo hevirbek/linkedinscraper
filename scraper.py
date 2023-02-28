@@ -87,7 +87,7 @@ async def scrape(email, password, username):
         except FileNotFoundError:
             cookies = None
 
-        browser = await p.chromium.launch(headless=False)
+        browser = await p.firefox.launch(headless=True)
         
         if cookies:
             context = await browser.new_context(

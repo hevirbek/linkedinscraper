@@ -22,11 +22,10 @@ if st.button("Scrape"):
     if os.name == "nt":
         loop = asyncio.ProactorEventLoop()
         asyncio.set_event_loop(loop)
-    else:
-        loop = asyncio.get_event_loop()
-        
 
-    user_details = loop.run_until_complete(main())
+        user_details = loop.run_until_complete(main())
+    else:
+        user_details = asyncio.run(main())
 
     if user_details is None:
         st.error("User not found.")

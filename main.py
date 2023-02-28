@@ -11,6 +11,10 @@ PASSWORD = os.getenv("PASSWORD")
 
 # install playwright
 os.system("playwright install")
+# sudo playwright install-deps
+if os.name != "nt":
+    os.system("sudo playwright install-deps")
+
 
 async def main():
     user_details = await scrape(EMAIL, PASSWORD, username)

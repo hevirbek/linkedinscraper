@@ -87,10 +87,11 @@ async def scrape(email, password, username):
         except FileNotFoundError:
             cookies = None
 
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(headless=False)
         
         if cookies:
             context = await browser.new_context(
+                viewport={"width": 1920, "height": 1080},
                 storage_state={"cookies": cookies}
             )
         else:
@@ -115,4 +116,3 @@ async def scrape(email, password, username):
             f.write(json.dumps(cookies))
 
         return user_details
-    

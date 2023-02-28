@@ -12,8 +12,7 @@ PASSWORD = os.getenv("PASSWORD")
 # install playwright
 os.system("playwright install")
 # sudo playwright install-deps
-if os.name != "nt":
-    os.system("sudo playwright install-deps")
+os.system("playwright install-deps")
 
 
 async def main():

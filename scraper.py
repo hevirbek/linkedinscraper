@@ -20,7 +20,7 @@ async def get_user_details(page,username):
     if page.url == NOT_FOUND_URL:
         return None
 
-    await page.wait_for_selector("main > section")
+    await page.wait_for_selector("div#profile-content")
 
     first_section = await page.query_selector("main > section")
 

@@ -9,6 +9,8 @@ load_dotenv()
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
 
+os.system("playwright install")
+
 async def main():
     user_details = await scrape(EMAIL, PASSWORD, username)
     return user_details
